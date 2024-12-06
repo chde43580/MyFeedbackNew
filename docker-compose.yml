@@ -1,0 +1,15 @@
+services:
+  myfeedback.backend:
+    image: ${DOCKER_REGISTRY-}myfeedbackbackend
+    build:
+      context: .
+      dockerfile: MyFeedback.Backend/Dockerfile
+
+  myfeedback.frontend:
+    image: ${DOCKER_REGISTRY-}myfeedbackfrontend
+    build:
+      context: .
+      dockerfile: MyFeedback.Frontend/Dockerfile
+      
+  mailcatcher:
+    image: haravich/fake-smtp-server

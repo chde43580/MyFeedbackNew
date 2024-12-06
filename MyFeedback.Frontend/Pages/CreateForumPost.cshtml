@@ -1,0 +1,46 @@
+﻿@page
+@model MyFeedback.Frontend.Pages.CreateForumPostModel
+@{
+    <h2>Opret forum-post</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <div class="form-group">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                 
+                    <input type="hidden" asp-for="ForumPostDto.CommentList" class="form-control" />
+
+                    <select name="Category">
+
+                        <option value="">Vælg et rum</option>
+
+                        @foreach (var category in Model.CategoryDtoList)
+                        {
+                            <option value=@category.Id>@category.Name</option>
+                        }
+                     
+                    </select>
+
+                    <br />
+
+                <label asp-for="ForumPostDto.ProblemText"></label>
+                <input asp-for="ForumPostDto.ProblemText" class="form-control"/>
+                <span asp-validation-for="ForumPostDto.ProblemText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ForumPostDto.SolutionText"></label>
+                <input asp-for="ForumPostDto.SolutionText" class="form-control" />
+                <span asp-validation-for="ForumPostDto.SolutionText" class="text-danger"></span>
+            </div>
+
+            <style>.btn {margin-top: 10px;} </style>
+
+            <button type="submit" class="btn btn-info" >Opret</button>
+        </form>
+    </div>
+</div>
+
+}

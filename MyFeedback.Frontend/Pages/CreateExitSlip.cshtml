@@ -1,0 +1,49 @@
+﻿@page
+@model MyFeedback.Frontend.Pages.ExitSlipModel
+@{
+
+    <h2>Opret exit slip</h2>
+
+    <form method="post">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <select asp-for="createExitSlipRequestDto.LessonId" asp-items="@(new SelectList(Model.lessonIdList))"> 
+        <option>Vælg lesson</option> 
+        </select>
+
+        <input asp-for"createExitSlipRequestDto.LessonId" type="hidden" /> 
+
+        <input asp-for="lessonIdList" type="hidden" />
+
+
+
+        @for (int i = 0; i < Model.createExitSlipRequestDto.QuestionList.Count(); i++)
+        {
+
+            <div>
+                <textarea asp-for="createExitSlipRequestDto.QuestionList[i].QuestionText" rows="4" cols="50" maxlength="200" placeholder="Skriv dit spørgsmål her..."> </textarea>
+
+                <input asp-for="createExitSlipRequestDto.QuestionList[i].QuestionText" type="hidden" />
+
+                @(Model.createExitSlipRequestDto.QuestionList[i].QuestionNumber = i + 1)
+
+                <input asp-for="createExitSlipRequestDto.QuestionList[i].QuestionNumber" type="hidden" />
+            </div>
+
+            <br />
+        }
+
+        @if(Model.createExitSlipRequestDto.QuestionList.Count() < 5)
+        {
+            <button type="submit" asp-page-handler="AddQuestion" class="btn btn-dark">Tilføj nyt spørgsmål</button>
+
+            <br />
+        }
+
+        <button type="submit" asp-page-handler="CreateExitSlip" class="btn btn-info">Gem exit slip</button>
+       
+    </form>
+
+
+}

@@ -1,0 +1,53 @@
+﻿@page
+@model MyFeedback.Frontend.Pages.TeacherExitSlipStartPageModel
+@{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th scope="col">Id</th>
+                <th scope="col">Lesson Id</th>
+                <th scope="col">Ér publiceret?</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var exitSlipDto in Model.ExitSlipDtoList)
+            {
+                <tr>
+
+                    <th scope="row">@exitSlipDto.Id</th>
+
+                    <td>@exitSlipDto.LessonId</td>
+
+                    <td>@exitSlipDto.IsPublished</td>
+
+
+
+
+
+                    <td> <a asp-page="EditExitSlip" asp-route-id="@exitSlipDto.Id" class="btn btn-secondary">Gå til exit slip</a></td>
+
+                    @if (User.HasClaim("IsAdmin", "1"))
+                    {
+
+                        <form method="post">
+
+                            <td> <button asp-page-handler="DeleteExitSlip" name="@exitSlipDto.Id" class="btn btn-danger">Slet exit slip</button> </td>
+
+                        </form>
+
+                    }
+
+
+                </tr>
+            }
+
+            <a asp-page="CreateExitSlip" class="btn btn-info">Opret ny exit slip</a>
+
+        </tbody>
+    </table>
+}
