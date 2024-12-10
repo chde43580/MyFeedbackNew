@@ -7,11 +7,11 @@ services:
     networks:
       - proxybackend
 
-  myfeedback.frontend:
-    image: ${DOCKER_REGISTRY-}myfeedbackfrontend
+  myfeedback.login:
+    image: ${DOCKER_REGISTRY-}myfeedbacklogin
     build:
       context: .
-      dockerfile: MyFeedback.Frontend/Dockerfile
+      dockerfile: MyFeedback.Login/Dockerfile
     networks:
     - proxybackend
       

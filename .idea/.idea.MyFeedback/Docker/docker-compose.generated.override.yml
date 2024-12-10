@@ -1,0 +1,57 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  myfeedback.backend:
+    build:
+      context: "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback"
+      dockerfile: "MyFeedback.Backend/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/MyFeedback.Backend.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "myfeedbackbackend:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback\\MyFeedback.Backend:/app:rw"
+    - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback:/src:rw"
+    - "C:\\Users\\neuro\\.nuget\\packages:/home/app/.nuget/packages"
+    working_dir: "/app"
+  myfeedback.login:
+    build:
+      context: "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback"
+      dockerfile: "MyFeedback.Login/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/MyFeedback.Login.dll"
+    environment:
+      ASPNETCORE_STATICWEBASSETS: "/app/bin/Debug/net8.0/MyFeedback.Login.staticwebassets.runtime.CT.json"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "myfeedbacklogin:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback\\MyFeedback.Login:/app:rw"
+    - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback:/src:rw"
+    - "C:\\Users\\neuro\\.nuget\\packages:/home/app/.nuget/packages"
+    working_dir: "/app"
+  myfeedback.proxybackend:
+    build:
+      context: "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback"
+      dockerfile: "MyFeedback.ProxyBackend/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/MyFeedback.ProxyBackend.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "myfeedbackproxybackend:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback\\MyFeedback.ProxyBackend:/app:rw"
+    - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback:/src:rw"
+    - "C:\\Users\\neuro\\.nuget\\packages:/home/app/.nuget/packages"
+    working_dir: "/app"
