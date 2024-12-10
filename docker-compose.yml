@@ -4,12 +4,31 @@ services:
     build:
       context: .
       dockerfile: MyFeedback.Backend/Dockerfile
+    networks:
+      - proxybackend
 
   myfeedback.frontend:
     image: ${DOCKER_REGISTRY-}myfeedbackfrontend
     build:
       context: .
       dockerfile: MyFeedback.Frontend/Dockerfile
+    networks:
+    - proxybackend
       
   mailcatcher:
     image: haravich/fake-smtp-server
+    networks:
+      - proxybackend
+
+  myfeedback.proxybackend:
+    image: ${DOCKER_REGISTRY-}myfeedbackproxybackend
+    build:
+      context: .
+      dockerfile: MyFeedback.ProxyBackend/Dockerfile
+    networks:
+      - proxybackend
+
+networks:
+  proxybackend:
+     name: proxybackend
+     driver: bridge

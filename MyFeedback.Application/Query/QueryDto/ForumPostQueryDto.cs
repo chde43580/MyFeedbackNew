@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyFeedback.Domain.Entities;
 
 namespace MyFeedback.Application.Query.QueryDto
 {

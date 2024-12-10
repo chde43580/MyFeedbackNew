@@ -1,9 +1,5 @@
 ﻿using MyFeedback.Application.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MyFeedback.Domain.Entities;
 
 namespace MyFeedback.Infrastructure.Repositories
 {

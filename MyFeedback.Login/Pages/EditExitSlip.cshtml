@@ -1,0 +1,53 @@
+﻿@page
+@model MyFeedback.Login.Pages.EditExitSlipModel
+@{
+
+    <h2>Redigér exit slip</h2>
+
+
+            <form method="post">
+
+            <!--    <div asp-validation-summary="ModelOnly" class="text-danger"></div> -->
+
+                @for (int i = 0; i < Model.ExitSlipViewModel.QuestionList.Count(); i++)
+            {
+                
+                 <label>@(i+1)</label>
+
+                 <br />
+
+                 <input asp-for="ExitSlipViewModel.QuestionList[i].QuestionText" readonly="@(Model.ExitSlipViewModel.IsPublished ? "readonly" : null)"/>
+
+                 <input asp-for="ExitSlipViewModel.QuestionList[i].QuestionText" hidden />
+
+                 <br />
+                 <br />
+
+            }
+
+            @if (Model.ExitSlipViewModel.IsPublished == true)
+            {
+                <label>Denne exit slip er allerede publiceret, så du kan ikke redigere i spørgsmålene</label>
+            }
+            else
+            {
+                <label> Publicér</label>
+                <input asp-for="ExitSlipViewModel.IsPublished" />
+                <input asp-for="ExitSlipViewModel.IsPublished" hidden />
+
+                <input name="ExitSlipViewModel.RowVersion" value="@Convert.ToBase64String(Model.ExitSlipViewModel.RowVersion)" hidden />
+                <input asp-for="ExitSlipViewModel.Id" hidden />
+                <input asp-for="ExitSlipViewModel.LessonId" hidden />
+            }
+
+        <br />
+
+             <button type="submit" class="btn btn-info">Gem</button>
+
+
+             </form>
+
+                <textarea asp-for="EditStatus" readonly="@(Model.EditStatus == "" ? "readonly" : null)"></textarea>
+                <input asp-for="EditStatus" hidden />
+
+}
