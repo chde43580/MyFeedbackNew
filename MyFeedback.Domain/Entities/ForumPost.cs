@@ -24,6 +24,7 @@ namespace MyFeedback.Domain.Entities
         {
             this.ProblemText = problemText;
             this.SolutionText = solutionText;
+            this.Comments = new List<Comment>();
         }
 
         public static ForumPost Create(string problemText, string solutionText)

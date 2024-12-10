@@ -8,6 +8,11 @@ namespace MyFeedback.Domain.Entities
 {
     public class Question : DomainEntity
     {
+        public Question()
+        {
+
+        }
+
         public Question(int questionNumber, string questionText)
         {
             QuestionNumber = questionNumber;   
