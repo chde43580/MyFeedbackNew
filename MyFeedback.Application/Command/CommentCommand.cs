@@ -42,7 +42,7 @@ namespace MyFeedback.Application.Command
 
         void ICommentCommand.UpdateComment(UpdateCommentDto updateCommentDto)
         {
-            throw new NotImplementedException(); //TODO: Lav metode for update, hvor den laver comment til pastComment
+            throw new NotImplementedException(); // Lav metode for update, hvor den laver comment til pastComment
         }
     }
 }

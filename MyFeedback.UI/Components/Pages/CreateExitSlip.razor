@@ -1,0 +1,107 @@
+﻿@page "/createexitslip"
+@rendermode InteractiveServer
+
+<PageTitle>Opret ny exit slip</PageTitle>
+
+<h3>Opret ny exit slip</h3>
+
+
+
+
+@code {
+
+     // Injecter IExitSlipClient, s� man kan kalde dens metoder mod REST-API'en
+    private readonly IExitSlipClient _exitSlipClient;
+
+    private readonly ILessonClient _lessonClient;
+
+    public CreateExitSlip(IExitSlipClient exitSlipClient, ILessonClient lessonClient)
+    {
+        // Constructor injections
+        _exitSlipClient = exitSlipClient; 
+        _lessonClient = lessonClient;
+    }
+
+    public CreateExitSlipRequestDto createExitSlipRequestDto { get; set; }
+    public List<Guid> lessonIdList { get; set; }
+       
+    CreateExitSlipRequestDto hej = new CreateExitSlipRequestDto();
+
+
+
+  //  <EditForm Model="@ExitSlipViewModel" OnSubmit="HandleValidSubmit">
+
+
+        <select @bind="createExitSlipRequestDto.LessonId" asp-items="@(new SelectList(Model.lessonIdList))"> 
+            <option>Vælg lesson</option> 
+        </select>
+
+        <input @bind="createExitSlipRequestDto.LessonId" type="hidden" /> 
+        <input @bind="lessonIdList" type="hidden" />
+
+
+        @for (int i = 0; i < createExitSlipRequestDto.QuestionList.Count(); i++)
+        {
+                <div>
+                    <textarea @bind="createExitSlipRequestDto.QuestionList[i].QuestionText" rows="4" cols="50" maxlength="200" placeholder="Skriv dit spørgsmål her..."> </textarea>
+
+                    <input @bind="createExitSlipRequestDto.QuestionList[i].QuestionText" type="hidden" />
+
+                    createExitSlipRequestDto.QuestionList[i].QuestionNumber = i + 1;
+
+                    <input @bind="createExitSlipRequestDto.QuestionList[i].QuestionNumber" type="hidden" />
+                </div>
+
+                <br />
+        }
+
+        @if (createExitSlipRequestDto.QuestionList.Count() < 5)
+        {
+                <button type="submit" onsubmit="@AddQuestion()" class="btn btn-dark">Tilføj nyt spørgsmål</button>
+
+                <br />
+        }
+
+            <button type="submit" class="btn btn-info">Gem exit slip</button>
+
+    //    </EditForm>
+
+
+
+
+    public async Task<IActionResult> OnGet()
+    {
+
+        var tempDtoList = await _lessonClient.GetAllLessons();
+
+        lessonIdList = tempDtoList.Select(e => e.Id).ToList();
+
+
+        if (createExitSlipRequestDto == null)
+        {
+            createExitSlipRequestDto = new CreateExitSlipRequestDto();
+
+            createExitSlipRequestDto.QuestionList = new List<CreateQuestionRequestDto>();
+
+            createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto() { QuestionNumber = 1, QuestionText = "" });
+
+        }
+
+        return Page();
+    }
+
+    public IActionResult HandleValidSubmit()
+    {
+        _exitSlipClient.CreateExitSlip(createExitSlipRequestDto);
+
+        return RedirectToPage("TeacherExitSlipStartPage");
+    }
+
+    public IActionResult AddQuestion()
+    {
+        createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto());
+
+        return Page();
+    }
+    }
+}

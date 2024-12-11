@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyFeedback.UI.Pages.Model
+namespace MyFeedback.UI.Components.Pages.Model
 {
     public record ExitSlipViewModel
     {

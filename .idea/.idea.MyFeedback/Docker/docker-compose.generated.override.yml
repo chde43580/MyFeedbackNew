@@ -55,3 +55,22 @@ services:
     - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback:/src:rw"
     - "C:\\Users\\neuro\\.nuget\\packages:/home/app/.nuget/packages"
     working_dir: "/app"
+  myfeedback.ui:
+    build:
+      context: "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback"
+      dockerfile: "MyFeedback.UI/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/MyFeedback.UI.dll"
+    environment:
+      ASPNETCORE_STATICWEBASSETS: "/app/bin/Debug/net8.0/MyFeedback.UI.staticwebassets.runtime.CT.json"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "myfeedbackui:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback\\MyFeedback.UI:/app:rw"
+    - "C:\\Users\\neuro\\source\\repos\\chde43580\\MyFeedback:/src:rw"
+    - "C:\\Users\\neuro\\.nuget\\packages:/home/app/.nuget/packages"
+    working_dir: "/app"
