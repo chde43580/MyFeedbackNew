@@ -1,11 +1,9 @@
-﻿using MyFeedback.Application.Query.QueryDto;
-using Shared;
+﻿using Shared;
 using Microsoft.AspNetCore.Authorization;
-using Azure.Core;
-using MyFeedback.UI.
-using MyFeedback.Login.TypedClients.Interfaces;
+using MyFeedback.UI.TypedClients.Interfaces;
+using MyFeedback.UI.Pages.Model;
 
-namespace MyFeedback.Login.TypedClients.Implementations
+namespace MyFeedback.UI.TypedClients.Implementations
 {
     public class ExitSlipClient : IExitSlipClient
     {

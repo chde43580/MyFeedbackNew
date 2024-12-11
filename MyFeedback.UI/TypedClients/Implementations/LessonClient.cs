@@ -1,7 +1,7 @@
-﻿using MyFeedback.Login.TypedClients.Interfaces;
+﻿using MyFeedback.UI.TypedClients.Interfaces;
 using Shared;
 
-namespace MyFeedback.Login.TypedClients.Implementations
+namespace MyFeedback.UI.TypedClients.Implementations
 {
     public class LessonClient : ILessonClient
     {

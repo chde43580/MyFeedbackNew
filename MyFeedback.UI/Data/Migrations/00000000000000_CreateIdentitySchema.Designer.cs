@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyFeedback.Login.Data;
 using System;
+using MyFeedback.UI.Data;
 
 namespace MyFeedback.Login.Data.Migrations
 {

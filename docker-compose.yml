@@ -33,9 +33,10 @@ services:
     build:
       context: .
       dockerfile: MyFeedback.UI/Dockerfile
+    networks:
+        - proxybackend
 
 networks:
   proxybackend:
      name: proxybackend
      driver: bridge
-

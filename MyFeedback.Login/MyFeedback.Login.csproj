@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyFeedback.DatabaseMigration\MyFeedback.DatabaseMigration.csproj" />
+    <ProjectReference Include="..\MyFeedback.UI\MyFeedback.UI.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 

@@ -1,8 +1,7 @@
-﻿using MyFeedback.Application.Query.QueryDto;
-using MyFeedback.Login.Pages.Model;
+﻿using MyFeedback.UI.Pages.Model;
 using Shared;
 
-namespace MyFeedback.Login.TypedClients.Interfaces
+namespace MyFeedback.UI.TypedClients.Interfaces
 {
     public interface IExitSlipClient
     {
@@ -12,7 +11,7 @@ namespace MyFeedback.Login.TypedClients.Interfaces
 
         public Task CreateExitSlip(CreateExitSlipRequestDto createExitSlipRequestDto);
 
-        public Task<ReturnModel> UpdateExitSlip(ExitSlipViewModel exitSlipDto);
+        public Task<ReturnModel> UpdateExitSlip(ExitSlipViewModel exitSlipViewModel);
 
         public Task DeleteExitSlip(Guid id);
     }

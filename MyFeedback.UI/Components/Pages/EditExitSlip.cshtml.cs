@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MyFeedback.Login.Pages.Model;
-using MyFeedback.Login.TypedClients.Interfaces;
+using MyFeedback.UI.Pages.Model;
+using MyFeedback.UI.TypedClients.Interfaces;
 using Newtonsoft.Json;
 using Shared;
 
-namespace MyFeedback.Login.Pages
+namespace MyFeedback.UI.Pages
 {
     public class EditExitSlipModel : PageModel
     {

@@ -2,10 +2,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shared;
-using System.Linq;
-using MyFeedback.Login.TypedClients.Interfaces;
+using MyFeedback.UI.TypedClients.Interfaces;
 
-namespace MyFeedback.Login.Pages
+namespace MyFeedback.UI.Pages
 {
     [Authorize("IsLoggedIn")]
     public class ExitSlipModel : PageModel

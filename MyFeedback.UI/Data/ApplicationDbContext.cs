@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyFeedback.Login.Data
+namespace MyFeedback.UI.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using MyFeedback.Infrastructure;
-using MyFeedback.Login.TypedClients.Interfaces;
-using MyFeedback.Login.TypedClients.Implementations;
+using MyFeedback.UI.TypedClients.Interfaces;
+using MyFeedback.UI.TypedClients.Implementations;
 
 
 // Database-migrationer kommandoer:

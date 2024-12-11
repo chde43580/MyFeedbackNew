@@ -1,5 +1,5 @@
 ﻿@page
-@model MyFeedback.Login.Pages.EditExitSlipModel
+@model MyFeedback.UI.Pages.EditExitSlipModel
 @{
 
     <h2>Redigér exit slip</h2>
@@ -35,7 +35,7 @@
                 <input asp-for="ExitSlipViewModel.IsPublished" />
                 <input asp-for="ExitSlipViewModel.IsPublished" hidden />
 
-                <input name="ExitSlipViewModel.RowVersion" value="@Convert.ToBase64String(Model.ExitSlipViewModel.RowVersion)" hidden />
+                <input name="ExitSlipViewModel.RowVersion" value="@Convert.ToBase64String((byte[])Model.ExitSlipViewModel.RowVersion)" hidden />
                 <input asp-for="ExitSlipViewModel.Id" hidden />
                 <input asp-for="ExitSlipViewModel.LessonId" hidden />
             }
