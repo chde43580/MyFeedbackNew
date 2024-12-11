@@ -2,7 +2,7 @@
 using Shared;
 using Microsoft.AspNetCore.Authorization;
 using Azure.Core;
-using MyFeedback.Login.Pages.Model;
+using MyFeedback.UI.
 using MyFeedback.Login.TypedClients.Interfaces;
 
 namespace MyFeedback.Login.TypedClients.Implementations

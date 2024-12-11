@@ -6,7 +6,8 @@
       "serviceActions": {
         "myfeedback.backend": "StartDebugging",
         "myfeedback.frontend": "StartDebugging",
-        "myfeedback.proxybackend": "StartDebugging"
+        "myfeedback.proxybackend": "StartDebugging",
+        "myfeedback.ui": "StartDebugging"
       }
     }
   }

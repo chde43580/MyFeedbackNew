@@ -28,7 +28,14 @@ services:
     networks:
       - proxybackend
 
+  myfeedback.ui:
+    image: ${DOCKER_REGISTRY-}myfeedbackui
+    build:
+      context: .
+      dockerfile: MyFeedback.UI/Dockerfile
+
 networks:
   proxybackend:
      name: proxybackend
      driver: bridge
+
