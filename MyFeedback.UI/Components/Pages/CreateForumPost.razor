@@ -1,5 +1,4 @@
-﻿@page
-@model MyFeedback.Login.Pages.CreateForumPostModel
+﻿@page "/createeforumpost"
 @{
     <h2>Opret forum-post</h2>
 
@@ -17,7 +16,7 @@
 
                         <option value="">Vælg et rum</option>
 
-                        @foreach (var category in Model.CategoryDtoList)
+                        @foreach (var category in CategoryDtoList)
                         {
                             <option value=@category.Id>@category.Name</option>
                         }
@@ -43,4 +42,61 @@
     </div>
 </div>
 
+}
+
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using MyFeedback.Application.Command;
+@using MyFeedback.Application.Command.CommandDto.ForumPost;
+@using MyFeedback.Application.Query;
+@using MyFeedback.Application.Query.QueryDto;
+
+namespace MyFeedback.Login.Pages
+{
+public class CreateForumPostModel : PageModel
+{
+private readonly IForumPostCommand _forumPostCommand;
+
+private readonly ICategoryQuery _categoryQuery;
+
+public CreateForumPostModel(IForumPostCommand forumPostCommand, ICategoryQuery categoryQuery)
+{
+this._forumPostCommand = forumPostCommand;
+
+this._categoryQuery = categoryQuery;
+}
+
+
+public ForumPostQueryDto ForumPostDto { get; set; }
+public IEnumerable<CategoryQueryDto> CategoryDtoList { get; set; }
+
+public void OnGet()
+{
+CategoryDtoList = _categoryQuery.GetAll();
+}
+
+public IActionResult OnPost()
+{
+if (!ModelState.IsValid)
+{
+return Page();
+}
+
+else
+{
+
+CreateForumPostDto createForumPostDto = new CreateForumPostDto
+{
+ProblemText = ForumPostDto.ProblemText,
+SolutionText = ForumPostDto.SolutionText,
+CategoryId = Guid.Parse(Request.Form["Category"])
+};
+                   
+
+_forumPostCommand.CreateForumPost(createForumPostDto);
+
+return RedirectToPage("StudentForumStartpage"); // Kunne man m�ske bruge CategoryId ovenfor til sende til rette forum-underside?
+}
+}
+}
 }
