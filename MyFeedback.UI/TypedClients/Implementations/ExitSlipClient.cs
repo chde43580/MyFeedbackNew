@@ -1,5 +1,4 @@
 ﻿using Shared;
-using Microsoft.AspNetCore.Authorization;
 using MyFeedback.UI.TypedClients.Interfaces;
 using MyFeedback.UI.Components.Pages.Model;
 
@@ -32,7 +31,7 @@ namespace MyFeedback.UI.TypedClients.Implementations
         {
             return await _client.GetFromJsonAsync<ExitSlipResultDto>($"/ExitSlip/{id}");
 
-            getResponse.EnsureSuccessStatusCode();
+            // getResponse.EnsureSuccessStatusCode();
         }
 
         

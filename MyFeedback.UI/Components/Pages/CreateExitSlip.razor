@@ -39,12 +39,12 @@
     <br />
 }
 
-<button type="submit" class="btn btn-info">Gem exit slip</button>
+<button onclick="HandleValidSubmit" class="btn btn-info">Gem exit slip</button>
 
 
 @code {
 
-     // Injecter IExitSlipClient, s� man kan kalde dens metoder mod REST-API'en
+     // Injecter IExitSlipClient, så man kan kalde dens metoder mod REST-API'en
     private readonly IExitSlipClient _exitSlipClient;
 
     private readonly ILessonClient _lessonClient;
@@ -56,9 +56,9 @@
     protected override void OnInitialized()
     {
         // Constructor injections
-        _exitSlipClient = exitSlipClient;
-        _lessonClient = lessonClient;
-        _navigationManager = navigationManager;
+        // this._exitSlipClient = exitSlipClient;
+        // this._lessonClient = lessonClient;
+        // this._navigationManager = navigationManager;
 
         // Bind prop.s initialiseres
         this.CreateExitSlipDtoPage = new CreateExitSlipRequestDto();
@@ -67,7 +67,7 @@
 
         var tempDtoList = _lessonClient.GetAllLessons();
 
-        LessonIdList = tempDtoList.ToList();
+      //  LessonIdList = tempDtoList.ToList();
 
 
         if (CreateExitSlipDtoPage == null)

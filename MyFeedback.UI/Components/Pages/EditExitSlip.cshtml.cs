@@ -27,14 +27,14 @@ namespace MyFeedback.UI.Pages
         public async Task<IActionResult> OnGet(Guid? id)
         {
             if (id == null)
-            { 
+            {
                 return RedirectToPage("NotFound");
             }
             else
             {
                 EditStatus = "";
 
-               ExitSlipResultDto resultDto = await _exitSlipClient.GetExitSlip(id);
+                ExitSlipResultDto resultDto = await _exitSlipClient.GetExitSlip(id);
 
                 ExitSlipViewModel = new ExitSlipViewModel
                 {
@@ -54,61 +54,66 @@ namespace MyFeedback.UI.Pages
 
         public async Task<IActionResult> OnPost()
         {
-            ExitSlipViewModel.RowVersion = Convert.FromBase64String(Request.Form["ExitSlipViewModel.RowVersion"]);
+            //ExitSlipViewModel.RowVersion = Convert.FromBase64String(Request.Form["ExitSlipViewModel.RowVersion"]);
 
-             var clientResult = await _exitSlipClient.UpdateExitSlip(ExitSlipViewModel);
+            // var clientResult = await _exitSlipClient.UpdateExitSlip(ExitSlipViewModel);
 
-             var resultDeserialized = JsonConvert.DeserializeObject<UpdateResult>(clientResult.JsonResponse);
+            // var resultDeserialized = JsonConvert.DeserializeObject<UpdateResult>(clientResult.JsonResponse);
 
-             EditStatus = resultDeserialized.message;
-
-
-
-            if (EditStatus == "Update successful")
-            {
-                return RedirectToPage("TeacherExitSlipStartPage");
-            }
-            else
-            {
-                return Page();
-            }
+            // EditStatus = resultDeserialized.message;
 
 
 
-
-            UpdateExitSlipDto updateExitSlipDto = new UpdateExitSlipDto();
-
-            updateExitSlipDto.Id = ExitSlipDto.Id;
-            updateExitSlipDto.RowVersion = ExitSlipDto.RowVersion;
-            updateExitSlipDto.LessonId = ExitSlipDto.LessonId;
-            updateExitSlipDto.QuestionList = ExitSlipDto.QuestionList;
-
-            if (ExitSlipDto.IsPublished == false)
-            {
-                updateExitSlipDto.IsPublished = IsChecked;
-            }
-            else
-            {
-                updateExitSlipDto.IsPublished = ExitSlipDto.IsPublished; // I dette tilf�lde tilsvarer dette altid, at s�tte updateDto'ens IsPublished til true
-            }
+            //if (EditStatus == "Update successful")
+            //{
+            //    return RedirectToPage("TeacherExitSlipStartPage");
+            //}
+            //else
+            //{
+            //    return Page();
+            //}
 
 
-            this._exitSlipCommand.UpdateExitSlip(updateExitSlipDto);
 
-            if (User.HasClaim("IsTeacher", "1"))
-            {
-                return RedirectToPage("TeacherExitSlipStartPage"); // Underviseren �nsker nok komme tilbage til sin exit slip-startside, s� de kan f� vist deres nyopdaterede exit slip
-            }
 
-            else if (User.HasClaim("IsStudent", "1"))
-            {
-                return RedirectToPage("StudentForumStartpage"); // PO �nskede man som studerende skulle sendes tilbage til deres forums startside
-            }
+            //    UpdateExitSlipDto updateExitSlipDto = new UpdateExitSlipDto();
 
-            else
-            {
-                return Page();
-            }
+            //    updateExitSlipDto.Id = ExitSlipDto.Id;
+            //    updateExitSlipDto.RowVersion = ExitSlipDto.RowVersion;
+            //    updateExitSlipDto.LessonId = ExitSlipDto.LessonId;
+            //    updateExitSlipDto.QuestionList = ExitSlipDto.QuestionList;
+
+            //    if (ExitSlipDto.IsPublished == false)
+            //    {
+            //        updateExitSlipDto.IsPublished = IsChecked;
+            //    }
+            //    else
+            //    {
+            //        updateExitSlipDto.IsPublished = ExitSlipDto.IsPublished; // I dette tilf�lde tilsvarer dette altid, at s�tte updateDto'ens IsPublished til true
+            //    }
+
+
+            //    this._exitSlipCommand.UpdateExitSlip(updateExitSlipDto);
+
+            //    if (User.HasClaim("IsTeacher", "1"))
+            //    {
+            //        return RedirectToPage("TeacherExitSlipStartPage"); // Underviseren �nsker nok komme tilbage til sin exit slip-startside, s� de kan f� vist deres nyopdaterede exit slip
+            //    }
+
+            //    else if (User.HasClaim("IsStudent", "1"))
+            //    {
+            //        return RedirectToPage("StudentForumStartpage"); // PO �nskede man som studerende skulle sendes tilbage til deres forums startside
+            //    }
+
+            //    else
+            //    {
+            //        return Page();
+            //    }
+            return Page();
         }
     }
 }
+
+       // }
+//    }
+//}
