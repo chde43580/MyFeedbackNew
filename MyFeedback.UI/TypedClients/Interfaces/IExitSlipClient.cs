@@ -1,4 +1,4 @@
-﻿using MyFeedback.UI.Pages.Model;
+﻿using MyFeedback.UI.Components.Pages.Model;
 using Shared;
 
 namespace MyFeedback.UI.TypedClients.Interfaces

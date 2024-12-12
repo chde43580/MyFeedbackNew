@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MyFeedback.UI.Pages.Model;
+using MyFeedback.UI.Components.Pages.Model;
+using MyFeedback.UI.Components.Pages.Model;
 using MyFeedback.UI.TypedClients.Interfaces;
 using Newtonsoft.Json;
 using Shared;
@@ -76,11 +77,11 @@ namespace MyFeedback.UI.Pages
 
             ExitSlipViewModel.RowVersion = Convert.FromBase64String(Request.Form["ExitSlipViewModel.RowVersion"]);
 
-            var clientResult = await _exitSlipClient.UpdateExitSlip(ExitSlipViewModel);
+            // var clientResult = await _exitSlipClient.UpdateExitSlip(ExitSlipViewModel);
 
-            var resultDeserialized = JsonConvert.DeserializeObject<UpdateResult>(clientResult.JsonResponse);
+            // var resultDeserialized = JsonConvert.DeserializeObject<UpdateResult>(clientResult.JsonResponse);
 
-            EditStatus = resultDeserialized.message;
+            // EditStatus = resultDeserialized.message;
 
 
 

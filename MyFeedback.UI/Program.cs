@@ -1,4 +1,5 @@
 using MyFeedback.UI.Components;
+using MyFeedback.UI.Pages;
 
 var builder = WebApplication.CreateBuilder(args);
 

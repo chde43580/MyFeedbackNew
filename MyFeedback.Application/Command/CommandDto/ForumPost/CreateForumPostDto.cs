@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace MyFeedback.Application.Command.CommandDto.ForumPost
 {
-    public record CreateForumPostDto
+    public class CreateForumPostDto
     {
         public string ProblemText { get; set; }
         public string SolutionText { get; set; }
 
         public Guid CategoryId { get; set; }
+
+        public CreateForumPostDto()
+        {
+            
+        }
     }
+    
+   
+    
+   
 }

@@ -1,7 +1,7 @@
 ﻿using Shared;
 using Microsoft.AspNetCore.Authorization;
 using MyFeedback.UI.TypedClients.Interfaces;
-using MyFeedback.UI.Pages.Model;
+using MyFeedback.UI.Components.Pages.Model;
 
 namespace MyFeedback.UI.TypedClients.Implementations
 {
@@ -35,8 +35,7 @@ namespace MyFeedback.UI.TypedClients.Implementations
             // getResponse.EnsureSuccessStatusCode();
         }
 
-       
-
+        
         async Task<ReturnModel> IExitSlipClient.UpdateExitSlip(ExitSlipViewModel exitSlipViewModel)
         {
             var updateExitSlipRequestDto = new UpdateExitSlipRequestDto { Id = exitSlipViewModel.Id, IsPublished = exitSlipViewModel.IsPublished, LessonId = exitSlipViewModel.LessonId, QuestionList = exitSlipViewModel.QuestionList, RowVersion = exitSlipViewModel.RowVersion };

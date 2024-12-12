@@ -1,5 +1,22 @@
-﻿@page "/createeforumpost"
-@{
+﻿@page "/createforumpost"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using global::MyFeedback.Application.Command;
+@using global::MyFeedback.Application.Command.CommandDto.ForumPost;
+@using global::MyFeedback.Application.Query;
+@using global::MyFeedback.Application.Query.QueryDto;
+@using global::MyFeedback.Application.Command
+@using Microsoft.AspNetCore.Components.Web
+@using CategoryQueryDto = global::MyFeedback.Application.Query.QueryDto.CategoryQueryDto
+@using CreateForumPostDto = global::MyFeedback.Application.Command.CommandDto.ForumPost.CreateForumPostDto
+@using ForumPostQueryDto = global::MyFeedback.Application.Query.QueryDto.ForumPostQueryDto
+@using ICategoryQuery = global::MyFeedback.Application.Query.ICategoryQuery
+@using Microsoft.AspNetCore.Components.Web
+
+
+<PageTitle>Opret forumindlæg></PageTitle>
+
     <h2>Opret forum-post</h2>
 
     <div class="row">
@@ -16,10 +33,10 @@
 
                         <option value="">Vælg et rum</option>
 
-                        @foreach (var category in CategoryDtoList)
-                        {
-                            <option value=@category.Id>@category.Name</option>
-                        }
+                        @* @foreach (var category in CategoryDtoList) *@
+                        @* { *@
+                        @*     <option value=@category.Id>@category.Name</option> *@
+                        @* } *@
                      
                     </select>
 
@@ -44,59 +61,53 @@
 
 }
 
-@using Microsoft.AspNetCore.Mvc;
-@using Microsoft.AspNetCore.Mvc.RazorPages;
-@using MyFeedback.Application.Command;
-@using MyFeedback.Application.Command.CommandDto.ForumPost;
-@using MyFeedback.Application.Query;
-@using MyFeedback.Application.Query.QueryDto;
+@code {
 
-namespace MyFeedback.Login.Pages
-{
-public class CreateForumPostModel : PageModel
-{
-private readonly IForumPostCommand _forumPostCommand;
+        public class CreateForumPostModel : PageModel
+    {
+        private readonly IForumPostCommand _forumPostCommand;
 
-private readonly ICategoryQuery _categoryQuery;
+        private readonly ICategoryQuery _categoryQuery;
 
-public CreateForumPostModel(IForumPostCommand forumPostCommand, ICategoryQuery categoryQuery)
-{
-this._forumPostCommand = forumPostCommand;
+        public CreateForumPostModel(IForumPostCommand forumPostCommand, ICategoryQuery categoryQuery)
+        {
+            this._forumPostCommand = forumPostCommand;
 
-this._categoryQuery = categoryQuery;
-}
+            this._categoryQuery = categoryQuery;
+        }
 
 
-public ForumPostQueryDto ForumPostDto { get; set; }
-public IEnumerable<CategoryQueryDto> CategoryDtoList { get; set; }
+        public ForumPostQueryDto ForumPostDto { get; set; }
+        public IEnumerable<CategoryQueryDto> CategoryDtoList { get; set; }
 
-public void OnGet()
-{
-CategoryDtoList = _categoryQuery.GetAll();
-}
+        public void OnGet()
+        {
+            CategoryDtoList = _categoryQuery.GetAll();
+        }
 
-public IActionResult OnPost()
-{
-if (!ModelState.IsValid)
-{
-return Page();
-}
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-else
-{
+            // else
+            // {
+            //     CreateForumPostDto createForumPostDto = new CreateForumPostDto
+            //     {
+            //         ProblemText = ForumPostDto.ProblemText,
+            //         SolutionText = ForumPostDto.SolutionText,
+            //         CategoryId = Guid.Parse(Request.Form["Category"])
+            //     };
 
-CreateForumPostDto createForumPostDto = new CreateForumPostDto
-{
-ProblemText = ForumPostDto.ProblemText,
-SolutionText = ForumPostDto.SolutionText,
-CategoryId = Guid.Parse(Request.Form["Category"])
-};
-                   
 
-_forumPostCommand.CreateForumPost(createForumPostDto);
+                // _forumPostCommand.CreateForumPost(createForumPostDto);
 
-return RedirectToPage("StudentForumStartpage"); // Kunne man m�ske bruge CategoryId ovenfor til sende til rette forum-underside?
-}
-}
-}
+                return RedirectToPage("StudentForumStartpage"); // Kunne man måske bruge CategoryId ovenfor til sende til rette forum-underside?
+            }
+        }
+    }
+    }
+
 }
