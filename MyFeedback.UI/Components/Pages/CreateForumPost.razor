@@ -92,19 +92,19 @@
                 return Page();
             }
 
-            // else
-            // {
-            //     CreateForumPostDto createForumPostDto = new CreateForumPostDto
-            //     {
-            //         ProblemText = ForumPostDto.ProblemText,
-            //         SolutionText = ForumPostDto.SolutionText,
-            //         CategoryId = Guid.Parse(Request.Form["Category"])
-            //     };
+            else
+            {
+                CreateForumPostDto createForumPostDto = new CreateForumPostDto
+                {
+                    ProblemText = ForumPostDto.ProblemText,
+                    SolutionText = ForumPostDto.SolutionText,
+                    CategoryId = Guid.Parse(Request.Form["Category"])
+                };
 
 
-                // _forumPostCommand.CreateForumPost(createForumPostDto);
+                _forumPostCommand.CreateForumPost(createForumPostDto);
 
-                return RedirectToPage("StudentForumStartpage"); // Kunne man måske bruge CategoryId ovenfor til sende til rette forum-underside?
+                return RedirectToPage("StudentForumStartpage"); 
             }
         }
     }

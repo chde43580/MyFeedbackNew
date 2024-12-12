@@ -54,7 +54,6 @@ namespace MyFeedback.Application.Command
 
         string IExitSlipCommand.UpdateExitSlip(UpdateExitSlipDto updateExitSlipDto)
         {
-            // Error handling her?
 
             try
             {
@@ -85,9 +84,9 @@ namespace MyFeedback.Application.Command
                     }
                 }
 
-                // More validation BL here
+           
 
-                _exitSlipRepo.UpdateExitSlip(oldExitSlip, updateExitSlipDto.RowVersion); // Har DTO'en her fået et RowVersion?
+                _exitSlipRepo.UpdateExitSlip(oldExitSlip, updateExitSlipDto.RowVersion);
 
                 _unitOfWork.Commit();
 
@@ -105,8 +104,6 @@ namespace MyFeedback.Application.Command
 
         void IExitSlipCommand.DeleteExitSlip(DeleteExitSlipDto deleteExitSlipDto)
         {
-            // Vi har bevidst her ikke implementeret nogen uow-funktionalitet; idet dette blot er en Delete-operation
-
            var exitSlipToDelete = _exitSlipRepo.GetExitSlip(deleteExitSlipDto.Id);
 
             _exitSlipRepo.DeleteExitSlip(exitSlipToDelete, deleteExitSlipDto.RowVersion);

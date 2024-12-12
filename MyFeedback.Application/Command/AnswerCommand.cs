@@ -52,7 +52,7 @@ namespace MyFeedback.Application.Command
 
                 oldAnswer.AnswerText = updateAnswerDto.AnswerText;
 
-                _answerRepo.UpdateAnswer(oldAnswer, updateAnswerDto.RowVersion); // Har DTO'en her fået et RowVersion?
+                _answerRepo.UpdateAnswer(oldAnswer, updateAnswerDto.RowVersion);
 
                 _unitOfWork.Commit();
             }

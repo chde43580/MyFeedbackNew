@@ -8,11 +8,9 @@ var app = builder.Build();
 
 
 
-// app.UseHttpsRedirection(); Bør køre HTTP, fordi internt i Docker-netværket, right?
+app.UseAuthorization();
 
-// app.UseAuthorization();
-
-// app.UseRouting(); Brug for?
+app.UseRouting(); 
 
 app.MapReverseProxy();
 

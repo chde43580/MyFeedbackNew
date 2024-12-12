@@ -49,28 +49,25 @@
 
     private readonly ILessonClient _lessonClient;
 
-    public CreateExitSlip(IExitSlipClient exitSlipClient, ILessonClient lessonClient, NavigationManager navigationManager)
-    {
-        // Constructor injections
-        _exitSlipClient = exitSlipClient; 
-        _lessonClient = lessonClient;
-        _navigationManager = navigationManager;
-        
-        // Bind prop.s initialiseres
-        this.CreateExitSlipDtoPage = new CreateExitSlipRequestDto();
-        this.LessonIdList = new List<Guid>();
-    }
-
     public CreateExitSlipRequestDto CreateExitSlipDtoPage { get; set; }
     public List<Guid> LessonIdList { get; set; }
     
 
     protected override void OnInitialized()
     {
+        // Constructor injections
+        _exitSlipClient = exitSlipClient;
+        _lessonClient = lessonClient;
+        _navigationManager = navigationManager;
+
+        // Bind prop.s initialiseres
+        this.CreateExitSlipDtoPage = new CreateExitSlipRequestDto();
+        this.LessonIdList = new List<Guid>();
+
 
         var tempDtoList = _lessonClient.GetAllLessons();
 
-     //   LessonIdList = tempDtoList.ToList();
+        LessonIdList = tempDtoList.ToList();
 
 
         if (CreateExitSlipDtoPage == null)

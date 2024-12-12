@@ -10,6 +10,6 @@ namespace Shared
     {
         public Guid Id { get; set; }
 
-        // Der kunne være flere properties her, men indtil videre har vi kun haft brug for Id-property'en
+     
     }
 }

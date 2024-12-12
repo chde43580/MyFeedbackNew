@@ -14,7 +14,7 @@ namespace MyFeedback.UI.Components.Pages.Model
 
         public Guid LessonId { get; set; }
 
-        public List<CreateQuestionRequestDto> QuestionList { get; set; } // Skal det blive til en anden slags question-dto
+        public List<CreateQuestionRequestDto> QuestionList { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

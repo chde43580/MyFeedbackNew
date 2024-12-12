@@ -12,8 +12,8 @@ namespace MyFeedback.Application.Query.QueryDto
     {
         public Guid Id { get; set; }
 
-        //[Timestamp]
-        //public byte[] RowVersion { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
         public DateTime PostDate { get; set; }
 

@@ -44,8 +44,6 @@ namespace MyFeedback.Application.Command
 
         void IForumPostCommand.DeleteForumPost(DeleteForumPostDto deleteForumPostDto)
         {
-            // Vi har bevidst her ikke implementeret nogen uow-funktionalitet; idet dette blot er en Delete-operation
-
             ForumPost forumPostToDelete = _forumPostRepo.GetForumPost(deleteForumPostDto.Id);
 
             _forumPostRepo.DeleteForumPost(forumPostToDelete, deleteForumPostDto.RowVersion);

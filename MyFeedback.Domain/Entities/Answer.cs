@@ -12,11 +12,6 @@ namespace MyFeedback.Domain.Entities
         public Guid IdentityUserId { get; protected set; }
         public string AnswerText { get; set; }
 
-        //Nul-constructor
-        //public Answer()
-        //{
-            
-        //}
 
         public Answer(Guid questionId, Guid identityUserId, string answerText)
         {

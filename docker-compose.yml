@@ -14,11 +14,6 @@ services:
       dockerfile: MyFeedback.Login/Dockerfile
     networks:
     - proxybackend
-      
-  mailcatcher:
-    image: haravich/fake-smtp-server
-    networks:
-      - proxybackend
 
   myfeedback.proxybackend:
     image: ${DOCKER_REGISTRY-}myfeedbackproxybackend

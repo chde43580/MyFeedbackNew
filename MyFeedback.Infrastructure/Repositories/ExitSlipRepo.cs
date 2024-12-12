@@ -47,7 +47,7 @@ namespace MyFeedback.Infrastructure.Repositories
         {
             _dbContext.Entry(exitSlip).Property(nameof(exitSlip.RowVersion)).OriginalValue = rowVersion;
 
-            _dbContext.ExitSlips.Update(exitSlip); // Virker det her??
+            _dbContext.ExitSlips.Update(exitSlip);
 
             _dbContext.SaveChanges();
         }

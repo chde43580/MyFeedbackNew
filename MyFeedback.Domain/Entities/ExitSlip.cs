@@ -9,8 +9,8 @@ namespace MyFeedback.Domain.Entities
 {
     public class ExitSlip : DomainEntity
     {
-        public Guid LessonId { get; set; } // Should maybe be protected setting?
-        public List<Question> QuestionList { get; set; } // Same as above
+        public Guid LessonId { get; set; } 
+        public List<Question> QuestionList { get; set; } 
 
         public bool IsPublished { get; set; }
 

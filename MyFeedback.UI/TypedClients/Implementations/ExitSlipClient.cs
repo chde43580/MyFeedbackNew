@@ -32,7 +32,7 @@ namespace MyFeedback.UI.TypedClients.Implementations
         {
             return await _client.GetFromJsonAsync<ExitSlipResultDto>($"/ExitSlip/{id}");
 
-            // getResponse.EnsureSuccessStatusCode();
+            getResponse.EnsureSuccessStatusCode();
         }
 
         
@@ -42,7 +42,7 @@ namespace MyFeedback.UI.TypedClients.Implementations
 
             var postResponse = await _client.PutAsJsonAsync<UpdateExitSlipRequestDto>("ExitSlip", updateExitSlipRequestDto);
 
-            //  postResponse.EnsureSuccessStatusCode();
+            postResponse.EnsureSuccessStatusCode();
 
             var returnModel = new ReturnModel();
 

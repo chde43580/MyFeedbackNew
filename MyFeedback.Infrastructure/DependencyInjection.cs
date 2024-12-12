@@ -23,8 +23,6 @@ namespace MyFeedback.Infrastructure
             services.AddScoped<IForumPostQuery, ForumPostQuery>();
             services.AddScoped<IForumPostRepo, ForumPostRepo>();
 
-            // Nogle vil kun have Query's, fordi man aldrig skal command'e dem (og derfor have repos)
-
             services.AddScoped<ICategoryQuery, CategoryQuery>();
      
 

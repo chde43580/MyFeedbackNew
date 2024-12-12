@@ -51,11 +51,6 @@ namespace MyFeedback.Infrastructure.Query
                 IsPublished = domainExitSlip.IsPublished
             };
 
-            //foreach (var question in domainExitSlip.QuestionList)
-            //{
-            //    dtoToReturn.QuestionList.Add(question);
-            //}
-
             return dtoToReturn;
 
         }
